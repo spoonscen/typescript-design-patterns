@@ -1,0 +1,16 @@
+{
+  "name": "head-first-design-patterns",
+  "version": "0.0.1",
+  "description": "working through an O'Reilly book",
+  "main": "index.js",
+  "scripts": {
+    "strategy": "ts-node patterns/strategy/MiniDuckSimulator.ts"
+  },
+  "author": "Cory E Noonan",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^2.1.4"
+  },
+  "devDependencies": {
+  }
+}
