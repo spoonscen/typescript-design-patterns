@@ -4,6 +4,6 @@
 - Favor composition over inheritance.
 
 # Patterns
-## Strategy
-- The Strategy Pattern defines a family of algorithms, encapsulates each one and makes them interchangeable. Strategy lets the algorithm vary independently from clients that use it.
-- `npm run strategy`
+* Strategy `npm run strategy`
+  * The Strategy Pattern defines a family of algorithms, encapsulates each one and makes them interchangeable. Strategy lets the algorithm vary independently from clients that use it.
+ 
