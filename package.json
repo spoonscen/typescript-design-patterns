@@ -2,15 +2,15 @@
   "name": "head-first-design-patterns",
   "version": "0.0.1",
   "description": "working through an O'Reilly book",
-  "main": "index.js",
   "scripts": {
+    "observer": "ts-node patterns/observer/WeatherStation.ts",
     "strategy": "ts-node patterns/strategy/MiniDuckSimulator.ts"
   },
   "author": "Cory E Noonan",
   "license": "ISC",
   "dependencies": {
+    "lodash": "^4.17.4",
     "typescript": "^2.1.4"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
