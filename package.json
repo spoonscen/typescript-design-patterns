@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "working through an O'Reilly book",
   "scripts": {
+    "decorator": "ts-node patterns/decorator/StarbuzzCoffee.ts",
     "observer": "ts-node patterns/observer/WeatherStation.ts",
     "strategy": "ts-node patterns/strategy/MiniDuckSimulator.ts"
   },
