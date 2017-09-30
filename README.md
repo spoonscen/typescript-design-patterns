@@ -17,6 +17,8 @@
   * The Factory Method Pattern defines an interface for creating an object, but lets subclasses decide which class to instantiate. Factory Method lets a class defer instantiation to subclasses.
 * Abstract Factory `npm run abstract-factory`
   * The Abstract Factory Pattern provides an interface for creating families of realted or dependent objects without specifying their concrete classes.
+* Singleton
+  * The Singleton Pattern ensures a class has only one instance, and provides a global point of access to it.
 
 # Notes
 - No variable should hold a reference to a concrete class.
