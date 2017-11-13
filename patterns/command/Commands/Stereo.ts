@@ -12,6 +12,10 @@ export class StereoOnWithCDCommand implements Command {
     this.stereo.setCd()
     this.stereo.setVolume(11)
   }
+
+  public undo(): void {
+    this.stereo.off()
+  }
 }
 export class StereoOffWithCDCommand implements Command {
   stereo: Stereo
@@ -22,5 +26,11 @@ export class StereoOffWithCDCommand implements Command {
 
   public execute(): void {
     this.stereo.off()
+  }
+
+  public undo(): void {
+    this.stereo.on()
+    this.stereo.setCd()
+    this.stereo.setVolume(11)
   }
 }

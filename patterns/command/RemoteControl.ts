@@ -2,16 +2,12 @@ import {
   NoCommand,
   LightOnCommand,
   LightOffCommand,
-  AllLightsOnCommand,
-  AllLightsOffCommand,
   CeilingFanHighCommand,
   CeilingFanMediumCommand,
-  CeilingFanLowCommand,
   CeilingFanOffCommand,
-  GarageDoorOpenCommand,
-  GarageDoorClosedCommand,
   StereoOnWithCDCommand,
-  StereoOffWithCDCommand
+  StereoOffWithCDCommand,
+  MacroCommand
 } from './Commands'
 import { Light, CeilingFan, GarageDoor, Stereo } from './Recievers'
 import { Command } from './types'
@@ -72,30 +68,19 @@ class RemoteLoader {
   main(): void {
     const remoteControl: RemoteControl = new RemoteControl()
     const livingRoomLight: Light = new Light('Living Room')
-    const kitchenLight: Light = new Light('Kitchen Room')
     const ceilingFan: CeilingFan = new CeilingFan('Living Room')
     const garageDoor: GarageDoor = new GarageDoor()
     const stereo: Stereo = new Stereo()
 
+    const stereoOn: StereoOnWithCDCommand = new StereoOnWithCDCommand(stereo)
+    const stereoOff: StereoOffWithCDCommand = new StereoOffWithCDCommand(stereo)
     const livingRoomLightOn: LightOnCommand = new LightOnCommand(livingRoomLight)
     const livingRoomLightOff: LightOffCommand = new LightOffCommand(livingRoomLight)
-    const kitchenLightOn: LightOnCommand = new LightOnCommand(kitchenLight)
-    const kitchenLightOff: LightOffCommand = new LightOffCommand(kitchenLight)
-    const allLightsOn: AllLightsOnCommand = new AllLightsOnCommand([livingRoomLight, kitchenLight])
-    const allLightsOff: AllLightsOffCommand = new AllLightsOffCommand([livingRoomLight, kitchenLight])
+
 
     const ceilingFanHigh: CeilingFanHighCommand = new CeilingFanHighCommand(ceilingFan)
     const ceilingFanMedium: CeilingFanMediumCommand = new CeilingFanMediumCommand(ceilingFan)
-    const ceilingFanLow: CeilingFanLowCommand = new CeilingFanLowCommand(ceilingFan)
     const ceilingFanOff: CeilingFanOffCommand = new CeilingFanOffCommand(ceilingFan)
-
-
-    const garageDoorOpen: GarageDoorOpenCommand = new GarageDoorOpenCommand(garageDoor)
-    const garageDoorClosed: GarageDoorClosedCommand = new GarageDoorClosedCommand(garageDoor)
-
-    const stereoOnWithCD: StereoOnWithCDCommand = new StereoOnWithCDCommand(stereo)
-    const stereoOffWithCD: StereoOffWithCDCommand = new StereoOffWithCDCommand(stereo)
-
 
     remoteControl.setCommand(0, ceilingFanHigh, ceilingFanOff)
     remoteControl.setCommand(1, ceilingFanMedium, ceilingFanOff)
@@ -109,6 +94,19 @@ class RemoteLoader {
     remoteControl.log()
     remoteControl.undoButtonWasPushed()
 
+    const partyOn = new MacroCommand([livingRoomLightOn, stereoOn])
+    const partyOff = new MacroCommand([livingRoomLightOff, stereoOff])
+    remoteControl.setCommand(2, partyOn, partyOff)
+    remoteControl.log()
+    remoteControl.onButtonWasPushed(2)
+    remoteControl.offButtonWasPushed(2)
+    remoteControl.undoButtonWasPushed()
+
+
+    // Instead of creating Command classes for each action, you can use lambda functions to acheive the same decoupling
+    // unfortunately javascript does not have the same functionality when it comes to replacing classes with lambdas like in java.
+    // so we need to mock out the class with an execute method
+    remoteControl.setCommand(3, { execute: () => garageDoor.up() }, { execute: () => garageDoor.down() })
 
   }
 }
