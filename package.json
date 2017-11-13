@@ -3,11 +3,12 @@
   "version": "0.0.1",
   "description": "working through an O'Reilly book",
   "scripts": {
+    "abstract-factory": "ts-node patterns/abstract-factory/PizzaStore.ts",
+    "command": "ts-node patterns/command/RemoteControl.ts",
     "decorator": "ts-node patterns/decorator/StarbuzzCoffee.ts",
-    "observer": "ts-node patterns/observer/WeatherStation.ts",
-    "strategy": "ts-node patterns/strategy/MiniDuckSimulator.ts",
     "factory": "ts-node patterns/factory/PizzaStore.ts",
-    "abstract-factory": "ts-node patterns/abstract-factory/PizzaStore.ts"
+    "observer": "ts-node patterns/observer/WeatherStation.ts",
+    "strategy": "ts-node patterns/strategy/MiniDuckSimulator.ts"
   },
   "author": "Cory E Noonan",
   "license": "ISC",

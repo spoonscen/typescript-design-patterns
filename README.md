@@ -19,6 +19,8 @@
   * The Abstract Factory Pattern provides an interface for creating families of realted or dependent objects without specifying their concrete classes.
 * Singleton
   * The Singleton Pattern ensures a class has only one instance, and provides a global point of access to it.
+* Command `npm run command`
+  * The Command Pattern encapsulates a request as an object, thereby letting you parmameterize other objects with different requests, queue or log requests, and support undoable operations.
 
 # Notes
 - No variable should hold a reference to a concrete class.
